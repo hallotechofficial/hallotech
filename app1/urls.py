@@ -14,3 +14,5 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
+
+# postgres://hallotech_user:LsV1eCHQdWB6i7tJJwUe43DRdbxHNGTG@dpg-cnq8hmen7f5s73f8pvo0-a.oregon-postgres.render.com/hallotech

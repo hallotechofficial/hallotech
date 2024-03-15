@@ -22,16 +22,15 @@ STA_DIRS= Path(__file__).joinpath(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "django-insecure-xczm*5!owas4a=pvscfzskfmyz8kzls=iophp%l4#1vi6%+cbx"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = True
 
 # Get the value of ALLOWED_HOSTS from environment variables
-allowed_hosts_str = os.environ.get("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
-# Split the string if it's not None, otherwise use an empty list
-ALLOWED_HOSTS = allowed_hosts_str.split() if allowed_hosts_str else []
 
 
 WSGI_APPLICATION = 'vercel_app.wsgi.app'
