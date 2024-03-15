@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 from pathlib import Path
-import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +29,7 @@ SECRET_KEY = "django-insecure-xczm*5!owas4a=pvscfzskfmyz8kzls=iophp%l4#1vi6%+cbx
 DEBUG = True
 
 # Get the value of ALLOWED_HOSTS from environment variables
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 
 
@@ -90,20 +89,18 @@ WSGI_APPLICATION = "startup.wsgi.application"
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Hallotech',
-#         'USER': 'sriram',
-#         'PASSWORD': 'Hallotech@987',
-#         'HOST': 'localhost',  # Replace with your PostgreSQL server's address if necessary
-#         'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
-#     }
-# }
-
-DATABASE = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Hallotech',
+        'USER': 'sriram',
+        'PASSWORD': 'Hallotech@987',
+        'HOST': 'localhost',  # Replace with your PostgreSQL server's address if necessary
+        'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
+    }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
