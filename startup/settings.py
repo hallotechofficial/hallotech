@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -23,12 +23,15 @@ STA_DIRS= Path(__file__).joinpath(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-xczm*5!owas4a=pvscfzskfmyz8kzls=iophp%l4#1vi6%+cbx"
+# SECRET_KEY = "django-insecure-xczm*5!owas4a=pvscfzskfmyz8kzls=iophp%l4#1vi6%+cbx"
+
+SECRET_KEY=os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "FALSE").lower == "true"
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOST= os.environ.get("ALLOWED_HOST").split(" ")
 
 WSGI_APPLICATION = 'startup.wsgi.app'
 
@@ -86,16 +89,21 @@ WSGI_APPLICATION = "startup.wsgi.application"
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Hallotech',
+#         'USER': 'sriram',
+#         'PASSWORD': 'Hallotech@987',
+#         'HOST': 'localhost',  # Replace with your PostgreSQL server's address if necessary
+#         'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
+#     }
+# }
+database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Hallotech',
-        'USER': 'sriram',
-        'PASSWORD': 'Hallotech@987',
-        'HOST': 'localhost',  # Replace with your PostgreSQL server's address if necessary
-        'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
-    }
+    'default': dj_database_url.parse(database_url)
 }
+# postgres://hallotech_user:LsV1eCHQdWB6i7tJJwUe43DRdbxHNGTG@dpg-cnq8hmen7f5s73f8pvo0-a.oregon-postgres.render.com/hallotech
 
 
 # Password validation
