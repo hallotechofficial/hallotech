@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+
 from pathlib import Path
 import os
 
@@ -24,14 +25,10 @@ STA_DIRS= Path(__file__).joinpath(BASE_DIR,'static')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-xczm*5!owas4a=pvscfzskfmyz8kzls=iophp%l4#1vi6%+cbx"
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# Get the value of ALLOWED_HOSTS from environment variables
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
@@ -99,7 +96,6 @@ DATABASES = {
         'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
     }
 }
-
 
 
 # Password validation
